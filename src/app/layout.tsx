@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="max-w-[95%] mx-auto">
+        <div className="max-w-[95%] mx-auto bg-myWhite">
           <Navbar />
           {children}
           <Footer />

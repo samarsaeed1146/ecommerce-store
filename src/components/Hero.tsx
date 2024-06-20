@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 
 const Hero = () => {
   return (
-    <div className="">
+    <div className="mb-40">
       <div className="hero min-h-screen custom-img bg-fixed bg-center bg-no-repeat">
         <div className="hero-overlay bg-opacity-30"></div>
         <div className="hero-content text-center text-neutral-content">
