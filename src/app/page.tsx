@@ -1,3 +1,4 @@
+import BestSelling from "@/components/BestSelling";
 import Categories from "@/components/Categories";
 import Hero from "@/components/Hero";
 import Promotion from "@/components/Promotion";
@@ -10,6 +11,7 @@ export default function Home() {
       <Services />
       <Promotion />
       <Categories />
+      <BestSelling />
     </main>
   );
 }
