@@ -23,7 +23,7 @@ const Categories = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Categories 1 */}
         <div className="mb-7 md:mb-0 overflow-hidden z-10 mx-auto group relative">
-          <Link href={"#"}>
+          <Link href={"/tops"}>
             <Image
               src={topsImg}
               alt="Tops"
@@ -41,7 +41,7 @@ const Categories = () => {
         </div>
         {/* Categories 2 */}
         <div className="mb-7 md:mb-0 overflow-hidden z-10 mx-auto group relative">
-          <Link href={"#"}>
+          <Link href={"/pants"}>
             <Image
               src={pantsImg}
               alt="Pants"
@@ -58,7 +58,7 @@ const Categories = () => {
         </div>
         {/* Categories 3 */}
         <div className="mb-7 md:mb-0 overflow-hidden z-10 mx-auto group relative">
-          <Link href={"#"}>
+          <Link href={"/accessories"}>
             <Image
               src={AccesImg}
               alt="Accessories"
@@ -76,7 +76,7 @@ const Categories = () => {
         </div>
         {/* Categories 4 */}
         <div className="mb-7 md:mb-0 overflow-hidden z-10 mx-auto group relative">
-          <Link href={"#"}>
+          <Link href={"/shoes"}>
             <Image
               src={shoesImg}
               alt="Shoes"
