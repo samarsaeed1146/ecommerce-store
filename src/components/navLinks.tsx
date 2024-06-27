@@ -63,8 +63,12 @@ export function NavigationMenuDemo() {
                 <Link
                   key={component.title}
                   href={component.href}
+                  legacyBehavior
+                  passHref
                 >
-                  <ListItem title={component.title}>{component.description}</ListItem>
+                  <ListItem title={component.title}>
+                    {component.description}
+                  </ListItem>
                 </Link>
               ))}
             </ul>
