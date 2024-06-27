@@ -24,7 +24,7 @@ const BestSellingCart = ({
   slug: string;
 }) => {
   return (
-    <div className="w-[350px] h-[35rem] p-4 mx-auto shadow-md rounded-xl relative group">
+    <div className="max-w-[350px] h-[35rem] p-4 mx-auto shadow-md rounded-xl relative group">
       <Link href={`/${category}/${slug}`}>
       {/* image */}
       <div className="block h-[23rem] rounded overflow-hidden">

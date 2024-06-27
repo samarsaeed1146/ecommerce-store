@@ -56,7 +56,7 @@ const BestSelling = () => {
             title={items.title}
             description={items.description}
             price={items.price}
-            category={items.category}
+            category={items.Category}
             slug={items.slug}
           />
         ))}
