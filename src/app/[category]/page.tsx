@@ -1,7 +1,10 @@
+'use client'
 import BestSellingCart from "@/components/BestSellingCart";
 import React from "react";
+import { useAppSelector } from "../store/Hooks";
 
 const Category = () => {
+  const product = useAppSelector((state) => state.product);
   const bestSell = [
     {
       src: "/picture/top-2.jpg",
