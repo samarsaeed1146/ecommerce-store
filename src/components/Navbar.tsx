@@ -41,7 +41,7 @@ export const Navbar = () => {
                 </details>
               </li>
               <li>
-                <Link href={"/aboutUs"}>About</Link>
+                <Link href={"/about"}>About</Link>
               </li>
               <li>
                 <Link href={"/contact"}>Contact</Link>
