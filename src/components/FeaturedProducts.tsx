@@ -4,50 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import BestSellingCart from "./BestSellingCart";
+import { useAppSelector } from "@/app/store/Hooks";
 
 const FeaturedProducts = () => {
   // my Data
-  const bestSell = [
-    {
-      src: "/picture/best selling-1.jpg",
-      alt: "Black T-Shirt",
-      title: "Black Simple t-shirt",
-      description: "Best Quality t-shirt For Women.",
-      price: 110,
-      Category: "tops",
-      slug: "black-t-shirt",
-    },
-    {
-      src: "/picture/best selling-2.jpg",
-      alt: "Creamy printed",
-      title: "Creamy Printed Design Bag",
-      description:
-        "New Printed Design Bag For Women & It Is Comfortable For Carry Bag.",
-      price: 380,
-      Category: "bag",
-      slug: "creamy-printed",
-    },
-    {
-      src: "/picture/best selling-3.jpg",
-      alt: "Shoes",
-      title: "Gray & Pink Shoes",
-      description:
-        "Best Quality Shoes in Wear & Walk & Its Design For Women Comfort.",
-      price: 525,
-      Category: "shoes",
-      slug: "gray-shoes",
-    },
-    {
-      src: "/picture/tops-3.jpg",
-      alt: "tops",
-      title: "Summer Collection",
-      description:
-        "Best Quality Shoes in Wear & Walk & Its Design For Women Comfort.",
-      price: 525,
-      Category: "shoes",
-      slug: "gray-shoes",
-    },
-  ];
+  const bestSell = useAppSelector((state) => state.product);
+
   // carousel setting
   var settings = {
     dots: true,
@@ -102,16 +64,17 @@ const FeaturedProducts = () => {
       </div>
       {/* carousel */}
       <Slider {...settings}>
-        {bestSell.map((items, i) => (
+        {bestSell.map((items:any, i) => (
           <BestSellingCart
             key={i}
-            src={items.src}
-            alt={items.alt}
+            src={items.image[0]}
+            alt={items.title}
             title={items.title}
             description={items.description}
             price={items.price}
             category={items.Category}
             slug={items.slug}
+            discount={items.discount}
           />
         ))}
       </Slider>

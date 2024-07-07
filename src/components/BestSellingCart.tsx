@@ -14,6 +14,7 @@ const BestSellingCart = ({
   price,
   category,
   slug,
+  discount,
 }: {
   src: string;
   alt: string;
@@ -22,26 +23,40 @@ const BestSellingCart = ({
   price: number;
   category: string;
   slug: string;
+  discount: number;
 }) => {
   return (
     <div className="max-w-[350px] h-[35rem] p-4 mx-auto shadow-md rounded-xl relative group">
       <Link href={`/${category}/${slug}`}>
-      {/* image */}
-      <div className="block h-[23rem] rounded overflow-hidden">
-        <Image src={src} alt="some" width={400} height={400} />
-      </div>
-      {/* typography */}
-      <div className="">
-        <h2 className="mt-4 scroll-m-20 border-b pb-2 text-xl font-bold tracking-tight first:mt-0 text-myBlackHead line-clamp-1">
-          {title}
-        </h2>
-        <p className="mt-2 scroll-m-20 text-sm font-semibold tracking-tight text-myBlackHeadPara line-clamp-2">
-          {description}
-        </p>
-        <p className="mt-2 scroll-m-20 text-base font-semibold tracking-tight text-myBlackHead line-clamp-2">
-          ${price}
-        </p>
-      </div>
+        {/* image */}
+        <div className="block h-[23rem] rounded overflow-hidden">
+          <Image src={src} alt="some" width={400} height={400} />
+        </div>
+        {/* typography */}
+        <div className="">
+          <h2 className="mt-4 scroll-m-20 border-b pb-2 text-xl font-bold tracking-tight first:mt-0 text-myBlackHead line-clamp-1">
+            {title}
+          </h2>
+          <p className="mt-2 scroll-m-20 text-sm font-semibold tracking-tight text-myBlackHeadPara line-clamp-2">
+            {description}
+          </p>
+          <div className="flex gap-3">
+            <p
+              className={`mt-2 scroll-m-20 text-base font-semibold tracking-tight text-myBlackHead line-clamp-2 ${
+                discount > 0 &&
+                "line-through decoration-2 decoration-myOrange/70"
+              }`}
+            >
+              ${price}
+            </p>
+            {/* discounted value */}
+            {discount > 0 && (
+              <p className="mt-2 scroll-m-20 text-base font-semibold tracking-tight text-myBlackHead line-clamp-2">
+                ${price - (price*discount)/100}
+              </p>
+            )}
+          </div>
+        </div>
       </Link>
       {/* button */}
       <div>
