@@ -52,7 +52,7 @@ const BestSellingCart = ({
             {/* discounted value */}
             {discount > 0 && (
               <p className="mt-2 scroll-m-20 text-base font-semibold tracking-tight text-myBlackHead line-clamp-2">
-                ${price - (price*discount)/100}
+                ${price - (price * discount) / 100}
               </p>
             )}
           </div>
@@ -68,6 +68,9 @@ const BestSellingCart = ({
           <IoIosHeart className="mr-2 w-4 h-4 group-hover:text-myOrange duration-300" />
           Buy Now
         </Button>
+        {discount > 0 && (
+          <div className="scroll-m-20 text-sm font-semibold tracking-tight text-myWhite bg-myOrange absolute -top-2 left-2 w-[100px] p-2 text-center uppercase rounded-tl-xl rounded-bl-xl myDiscount">{`${discount}% off`}</div>
+        )}
       </div>
     </div>
   );

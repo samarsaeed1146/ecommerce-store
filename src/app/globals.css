@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 .custom-img {
-    background-image: url("../../public/Hero.jpg");
+  background-image: url("../../public/Hero.jpg");
 }
 .promo-1 {
-    background-image: url('../../public/picture/promotion-1.jpg');
+  background-image: url("../../public/picture/promotion-1.jpg");
 }
 .promo-2 {
-    background-image: url('../../public/picture/promotion-2.jpg');
+  background-image: url("../../public/picture/promotion-2.jpg");
+}
+.myDiscount {
+  transform: rotate(-90deg) translate(0, -69px);
+  transform-origin: 100%;
 }

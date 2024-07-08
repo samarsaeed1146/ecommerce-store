@@ -8,7 +8,7 @@ import { useAppSelector } from "@/app/store/Hooks";
 
 const FeaturedProducts = () => {
   // my Data
-  const bestSell = useAppSelector((state) => state.product);
+  const bestSell = useAppSelector((state) => state.product.slice(0, 10));
 
   // carousel setting
   var settings = {

@@ -11,7 +11,7 @@ export type Product = {
   size: string[];
   color: string[];
   qty: number;
-  discount?: number;
+  discount: number;
 };
 
 export type Cart = {
@@ -20,7 +20,7 @@ export type Cart = {
   image?: string | StaticImageData | undefined;
   slug: string;
   price: number;
-  discount?: number;
+  discount: number;
   category: string;
   size: string[];
   qty: number;
