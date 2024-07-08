@@ -7,7 +7,7 @@ export const products: Product[] = [
     image: ["/picture/top-2.jpg"],
     slug: "leather-jecket",
     price: 160,
-    discount: 1,
+    discount: 5,
     category: "tops",
     description:
       "Leather Jacket Feel Less Cold For Women Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis accusantium exercitationem enim obcaecati amet praesentium corporis distinctio optio sunt eum dolorum, similique a officiis! Veritatis incidunt omnis nulla, Iusto veniam, sit soluta voluptate quod adipisci, quis nisi optio iste eveniet molestiae ullam?",

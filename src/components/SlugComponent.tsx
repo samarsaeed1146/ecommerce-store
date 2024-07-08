@@ -18,7 +18,7 @@ const SlugComponent = ({
         {image.map((item: string, i: number) => (
           <div key={i} className="cursor-pointer w-16 h-16">
             <Image
-              src={item[0]}
+              src={image[0]}
               alt="ecommerce"
               width={60}
               height={60}
