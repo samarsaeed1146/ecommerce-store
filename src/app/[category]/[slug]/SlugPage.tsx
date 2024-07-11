@@ -23,6 +23,7 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
     category: slug[0].category,
     size: slug[0].size[0],
     qty: slug[0].qty,
+    color: slug[0].color[0],
   });
   return (
     <div>
