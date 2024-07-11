@@ -1,8 +1,11 @@
+'use client'
 import CartCard from "@/components/CartCard";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import { useAppSelector } from "../store/Hooks";
 
 const Cart = () => {
+  const cart = useAppSelector((state) => state.cart)
   return (
     <div className="mb-40 mt-20">
       <div className="grid md:grid-cols-3 grid-cols-1">

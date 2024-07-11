@@ -5,11 +5,25 @@ import { TiShoppingCart } from "react-icons/ti";
 import { LuPlus } from "react-icons/lu";
 import { RiSubtractLine } from "react-icons/ri";
 import SlugComponent from "@/components/SlugComponent";
-import { useAppSelector } from "../../store/Hooks";
+import { useAppDispatch, useAppSelector } from "../../store/Hooks";
+import { useState } from "react";
+import { addToCart } from "@/app/store/feature/Cart";
 
 const SlugPage = ({ params }: { params: { slug: string } }) => {
   const product = useAppSelector((state) => state.product);
   const slug = product.filter((val) => val.slug === params.slug);
+  const dispatch = useAppDispatch();
+  const [cartItem, setCartItem] = useState({
+    id: slug[0].id,
+    title: slug[0].title,
+    image: slug[0].image,
+    slug: slug[0].slug,
+    price: slug[0].price,
+    discount: slug[0].discount,
+    category: slug[0].category,
+    size: slug[0].size[0],
+    qty: slug[0].qty,
+  });
   return (
     <div>
       <div className="container px-5 py-24 mx-auto">
@@ -68,6 +82,7 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
                 {slug[0].color.map((item, i) => (
                   <button
                     key={i}
+                    onClick={() => setCartItem({ ...cartItem, color: item })}
                     className="border-2 border-gray-300 mr-1 rounded-full w-6 h-6 focus:outline-none active:border-black focus:border-black"
                     style={{ backgroundColor: item }}
                   />
@@ -79,7 +94,7 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
                   Size
                 </span>
                 <div className="relative">
-                  <select className="select select-bordered">
+                  <select onChange={(e)=>setCartItem({...cartItem, size:e.target.value})} className="select select-bordered">
                     <option disabled selected>
                       Select Size
                     </option>
@@ -95,13 +110,26 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
               <span className="mr-3 scroll-m-20 text-base text-myBlackHead font-semibold tracking-tight">
                 Quantity
               </span>
-              <Button className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl w-fit h-fit">
+              <Button
+                onClick={() =>
+                  setCartItem({
+                    ...cartItem,
+                    qty: cartItem.qty <= 1 ? 1 : --cartItem.qty,
+                  })
+                }
+                className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl w-fit h-fit"
+              >
                 <RiSubtractLine className="mr-2 w-4 h-4 group-hover:text-myOrange duration-300" />
               </Button>
               <div className="mr-2 ml-2 scroll-m-20 text-base font-semibold tracking-tight">
-                {slug[0].qty}
+                {cartItem.qty}
               </div>
-              <Button className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl w-fit h-fit">
+              <Button
+                onClick={() =>
+                  setCartItem({ ...cartItem, qty: ++cartItem.qty })
+                }
+                className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl w-fit h-fit"
+              >
                 <LuPlus className="mr-2 w-4 h-4 group-hover:text-myOrange duration-300" />
               </Button>
             </div>
@@ -109,21 +137,26 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
             <div className="flex items-center justify-between">
               {/* price */}
               <div>
-                <span className={`scroll-m-20 text-2xl font-semibold tracking-tight text-myBlackHead ${
-                slug[0].discount > 0 &&
-                "line-through decoration-2 decoration-myOrange/70"
-              }`}>
-                  ${slug[0].price}
+                <span
+                  className={`scroll-m-20 text-2xl font-semibold tracking-tight text-myBlackHead ${
+                    cartItem.discount > 0 &&
+                    "line-through decoration-2 decoration-myOrange/70"
+                  }`}
+                >
+                  ${cartItem.price * cartItem.qty}
                 </span>
                 {/* discounted value */}
                 {slug[0].discount > 0 && (
                   <span className="ml-3 scroll-m-20 text-2xl font-semibold tracking-tight text-myBlackHead">
-                    ${slug[0].price - (slug[0].price * slug[0].discount) / 100}
+                    $
+                    {(cartItem.price -
+                      (cartItem.price * cartItem.discount) / 100) *
+                      cartItem.qty}
                   </span>
                 )}
               </div>
               {/* add to cart */}
-              <Button className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl">
+              <Button onClick={()=>dispatch(addToCart(cartItem))} className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl">
                 <TiShoppingCart className="mr-2 w-4 h-4 group-hover:text-myOrange duration-300" />
                 Add to Cart
               </Button>

@@ -24,4 +24,5 @@ export type Cart = {
   category: string;
   size: string[];
   qty: number;
+  uuid: string | number | undefined;
 };
