@@ -63,34 +63,7 @@ const CartCard = () => {
                     <LuPlus className=" h4 w-4 group-hover:text-myBlackHead font-extrabold" />
                   </Button>
                 </div>
-                {/* price and delete */}
-                <div className="md:hidden flex flex-col gap-2">
-                  <h3 className="text-sm font-semibold leading-none line-clamp-1 text-myBlackHead md:mt-0 mt-2">
-                    <span>Price:&nbsp;</span>$
-                    {item.discount > 0
-                      ? item.price -
-                        ((item.price * item.discount) / 100) * item.qty
-                      : item.price * item.qty}
-                  </h3>
-                  <BsTrash
-                    onClick={() => dispatch(delItem)}
-                    className="text-base font-semibold leading-none line-clamp-1 text-red-600 cursor-pointer"
-                  />
-                </div>
               </div>
-            </div>
-            {/* price and delete */}
-            <div className="hidden md:flex flex-col items-end gap-5">
-              <h3 className="text-sm font-semibold leading-none line-clamp-1 text-myBlackHead">
-                <span>Price:&nbsp;</span>$
-                {item.discount > 0
-                  ? item.price - ((item.price * item.discount) / 100) * item.qty
-                  : item.price * item.qty}
-              </h3>
-              <BsTrash
-                onClick={() => dispatch(delItem)}
-                className="text-base font-semibold leading-none line-clamp-1 text-red-600 cursor-pointer"
-              />
             </div>
           </div>
         ))}
