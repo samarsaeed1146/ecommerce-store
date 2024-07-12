@@ -1,18 +1,17 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { IoIosHeart } from "react-icons/io";
-import { TiShoppingCart } from "react-icons/ti";
 import { LuPlus } from "react-icons/lu";
 import { RiSubtractLine } from "react-icons/ri";
 import SlugComponent from "@/components/SlugComponent";
-import { useAppDispatch, useAppSelector } from "../../store/Hooks";
+import { useAppSelector } from "../../store/Hooks";
 import { useState } from "react";
-import { addToCart } from "@/app/store/feature/Cart";
+import AddToCartToast from "@/components/AddToCartToast";
 
 const SlugPage = ({ params }: { params: { slug: string } }) => {
   const product = useAppSelector((state) => state.product);
   const slug = product.filter((val) => val.slug === params.slug);
-  const dispatch = useAppDispatch();
+ 
   const [cartItem, setCartItem] = useState({
     id: slug[0].id,
     title: slug[0].title,
@@ -115,7 +114,7 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
                 onClick={() =>
                   setCartItem({
                     ...cartItem,
-                    qty: cartItem.qty <= 1 ? 1 : --cartItem.qty,
+                    qty: cartItem.qty <= 0 ? 1 : --cartItem.qty,
                   })
                 }
                 className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl w-fit h-fit"
@@ -157,10 +156,11 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
                 )}
               </div>
               {/* add to cart */}
-              <Button onClick={()=>dispatch(addToCart(cartItem))} className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl">
+              {/* <Button onClick={()=>dispatch(addToCart(cartItem))} className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl">
                 <TiShoppingCart className="mr-2 w-4 h-4 group-hover:text-myOrange duration-300" />
                 Add to Cart
-              </Button>
+              </Button> */}
+              <AddToCartToast cartItem={cartItem}/>
             </div>
             {/* buy now*/}
             <Button className="mt-4 w-full group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl">
