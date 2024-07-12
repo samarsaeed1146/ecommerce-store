@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "Women Choice",
+  title: "E-commerce",
   description: "We Offer Best Clothing Outfits",
 };
 
