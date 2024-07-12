@@ -2,9 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { IoIosHeart } from "react-icons/io";
-import { TiShoppingCart } from "react-icons/ti";
-import bestImgOne from "../../public/picture/best selling-1.jpg";
 import Link from "next/link";
+import BestSellingCartAddToCart from "./BestSellingCartAddToCart";
 
 const BestSellingCart = ({
   src,
@@ -60,10 +59,9 @@ const BestSellingCart = ({
       </Link>
       {/* button */}
       <div>
-        <Button className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl absolute bottom-2 right-2">
-          <TiShoppingCart className="mr-2 w-4 h-4 group-hover:text-myOrange duration-300" />
-          Add to Cart
-        </Button>
+        <div className="absolute bottom-2 right-2">
+          <BestSellingCartAddToCart slug={slug} />
+        </div>
         <Button className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl absolute bottom-2 left-2">
           <IoIosHeart className="mr-2 w-4 h-4 group-hover:text-myOrange duration-300" />
           Buy Now

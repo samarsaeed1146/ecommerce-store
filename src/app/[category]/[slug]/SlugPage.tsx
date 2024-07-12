@@ -11,7 +11,7 @@ import AddToCartToast from "@/components/AddToCartToast";
 const SlugPage = ({ params }: { params: { slug: string } }) => {
   const product = useAppSelector((state) => state.product);
   const slug = product.filter((val) => val.slug === params.slug);
- 
+
   const [cartItem, setCartItem] = useState({
     id: slug[0].id,
     title: slug[0].title,
@@ -94,7 +94,12 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
                   Size
                 </span>
                 <div className="relative">
-                  <select onChange={(e)=>setCartItem({...cartItem, size:e.target.value})} className="select select-bordered">
+                  <select
+                    onChange={(e) =>
+                      setCartItem({ ...cartItem, size: e.target.value })
+                    }
+                    className="select select-bordered"
+                  >
                     <option disabled selected>
                       Select Size
                     </option>
@@ -155,12 +160,7 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
                   </span>
                 )}
               </div>
-              {/* add to cart */}
-              {/* <Button onClick={()=>dispatch(addToCart(cartItem))} className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl">
-                <TiShoppingCart className="mr-2 w-4 h-4 group-hover:text-myOrange duration-300" />
-                Add to Cart
-              </Button> */}
-              <AddToCartToast cartItem={cartItem}/>
+              <AddToCartToast cartItem={cartItem} />
             </div>
             {/* buy now*/}
             <Button className="mt-4 w-full group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl">
